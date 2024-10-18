@@ -1,0 +1,51 @@
+﻿@model List<ST10384480CMCS.Models.Claim>
+
+<div style="text-align: center; font-family: Arial, sans-serif;">
+    <h2>Submitted Claims</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Claim Id</th>
+                <th>Lecturer Id</th>
+                <th>Hours Worked</th>
+                <th>Rate</th>
+                <th>Additional Notes</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var claim in Model)
+            {
+                <tr>
+                    <td>@claim.ClaimId</td>
+                    <td>@claim.LecturerId</td>
+                    <td>@claim.HoursWorked</td>
+                    <td>@claim.Rate</td>
+                    <td>@claim.AdditionalNotes</td>
+                    <td>@claim.Status</td>
+                    <td>
+                        @if (claim.Status == "Pending")
+
+                        {
+                            <form asp-action="Approve" asp-controller="Claim" method="post" style="display:inline">
+                                <input type="hidden" name="claimId" value="@claim.ClaimId" />
+                                <button type="submit" class="btn btn-success">Approve</button>
+                            </form>
+                            <form asp-action="Reject" asp-controller="Claim" method="post" style="display:inline">
+                                <input type="hidden" name="claimId" value="@claim.ClaimId" />
+                                <button type="submit" class="btn btn-danger">Reject</button>
+                            </form>
+                        }
+
+                        else
+
+                        {
+                            <span>@claim.Status</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

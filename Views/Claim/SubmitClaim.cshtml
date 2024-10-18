@@ -1,0 +1,26 @@
+﻿@model ST10384480CMCS.Models.Claim
+
+<div style="text-align: center; font-family: Arial, sans-serif;">
+    <h2>Submit a Claim</h2>
+    <form asp-action="SubmitClaim" method="post">
+        <div>
+            <label>Lecturer Id</label>
+            <input asp-for="LecturerId" class="form-control" />
+        </div>
+        <div>
+            <label>Hours Worked</label>
+            <input asp-for="HoursWorked" class="form-control" />
+        </div>
+        <div>
+            <label>Rate</label>
+            <input asp-for="Rate" class="form-control" />
+        </div>
+        <div>
+            <label>Additional Notes</label>
+            <textarea asp-for="AdditionalNotes" class="form-control"></textarea>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit Claim</button>
+        </div>
+    </form>
+</div>
